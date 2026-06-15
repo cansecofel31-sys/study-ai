@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Recuperar contraseña</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    width:420px;
+    background:rgba(255,255,255,.08);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+}
+input,
+button{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:18px;
+
+    margin-top:20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:18px;
+
+}
+
+button{
+
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+button{
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+a{color:#38bdf8;}
+.error{color:#fca5a5;}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Recuperar contraseña</h1>
+    <p>Escribe tu correo registrado.</p>
+
+    {% if mensaje %}
+        <p class="error">{{ mensaje }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <input type="email" name="correo" placeholder="Correo" required>
+        <button type="submit">Continuar</button>
+    </form>
+
+    <br>
+    <a href="/login">← Volver al login</a>
+</div>
+
+</body>
+</html>

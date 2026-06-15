@@ -1,0 +1,14 @@
+digraph {
+	rankdir=TB
+	A [label="Documento PDF"]
+	B [label="Ideas principales"]
+	C [label="Conceptos clave"]
+	D [label="Preguntas de estudio"]
+	E [label=Resumen]
+	F [label=Flashcards]
+	A -> B
+	A -> C
+	B -> E
+	C -> D
+	D -> F
+}

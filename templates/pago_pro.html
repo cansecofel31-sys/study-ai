@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago Pro - Study AI</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    text-align:center;
+}
+
+.card{
+    max-width:700px;
+    margin:60px auto;
+    background:rgba(255,255,255,.08);
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:42px;
+    margin-bottom:30px;
+    color:#38bdf8;
+}
+
+.dato{
+    background:rgba(255,255,255,.12);
+    padding:18px;
+    border-radius:15px;
+    margin:15px 0;
+    font-size:28px;
+}
+
+.file-premium{
+    display:inline-block;
+    margin-top:20px;
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+    color:white;
+    padding:18px 40px;
+    border-radius:16px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+.file-premium:hover{
+    transform:scale(1.05);
+}
+
+.archivo-nombre{
+    margin-top:15px;
+    color:#dbeafe;
+    font-size:18px;
+    font-weight:600;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+    color:white;
+    padding:15px 40px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.volver{
+    color:#38bdf8;
+    text-decoration:none;
+    font-size:22px;
+}
+
+.mensaje{
+    background:#16a34a;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🚀 Pago Plan Pro</h1>
+
+    <h2>$199 MXN / mes</h2>
+
+    {% if mensaje %}
+    <div class="mensaje">
+        {{ mensaje }}
+    </div>
+    {% endif %}
+
+    <p>Realiza tu transferencia bancaria con estos datos:</p>
+
+    <div class="dato">
+        Banco: {{datos[0]}}
+    </div>
+
+    <div class="dato">
+        Titular: {{datos[1]}}
+    </div>
+
+    <div class="dato">
+        Tarjeta Bancaria: {{datos[2]}}
+    </div>
+
+    <div class="dato">
+        Concepto: Study AI Pro
+    </div>
+
+    <p>
+        Después de pagar, sube aquí tu comprobante.
+    </p>
+
+    <form action="/pago-pro" method="POST" enctype="multipart/form-data">
+
+        <label for="comprobante" class="file-premium">
+            📎 Seleccionar comprobante
+        </label>
+
+        <input
+            type="file"
+            id="comprobante"
+            name="comprobante"
+            accept=".jpg,.jpeg,.png,.pdf"
+            required
+            hidden
+        >
+
+        <p id="nombreArchivo" class="archivo-nombre">
+            Ningún archivo seleccionado
+        </p>
+
+        <button type="submit" class="btn">
+            Enviar comprobante
+        </button>
+
+    </form>
+
+    <br><br>
+
+    <a href="/dashboard" class="volver">
+        ← Volver al Dashboard
+    </a>
+
+</div>
+
+<script>
+
+const input = document.getElementById("comprobante");
+const nombre = document.getElementById("nombreArchivo");
+
+input.addEventListener("change", function(){
+
+    if(input.files.length > 0){
+        nombre.innerHTML =
+        "✅ Archivo seleccionado: " +
+        input.files[0].name;
+    }
+    else{
+        nombre.innerHTML =
+        "Ningún archivo seleccionado";
+    }
+
+});
+
+</script>
+
+</body>
+</html>

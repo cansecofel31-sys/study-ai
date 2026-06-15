@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro - Study AI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+}
+
+.registro-box{
+    width:450px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.logo{
+    text-align:center;
+    font-size:38px;
+    font-weight:800;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:2px solid #e2e8f0;
+    border-radius:12px;
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.error{
+    color:red;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.login{
+    text-align:center;
+    margin-top:20px;
+}
+
+.login a{
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.plan{
+    text-align:center;
+    margin-top:25px;
+    color:#64748b;
+}
+
+</style>
+</head>
+<body>
+
+<div class="registro-box">
+
+    <div class="logo">📘 Study AI</div>
+
+    <div class="subtitulo">
+        Crea tu cuenta gratuita
+    </div>
+
+    {% if mensaje %}
+        <div class="error">
+            {{ mensaje }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre completo"
+            required
+        >
+
+        <input
+            type="email"
+            name="correo"
+            placeholder="Correo electrónico"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            required
+        >
+
+        <button type="submit">
+            Crear cuenta
+        </button>
+
+    </form>
+
+    <div class="login">
+        <a href="/login">
+            Ya tengo cuenta
+        </a>
+    </div>
+
+    <div class="plan">
+        Plan Gratis incluido
+    </div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Usuarios - Study AI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+.header{
+    background:linear-gradient(90deg,#1e3a8a,#0284c7);
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+.btn-volver{
+    background:white;
+    color:#1e3a8a;
+    padding:12px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    padding:30px;
+}
+
+.card{
+    background:#1e293b;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+tr:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.btn{
+    padding:8px 14px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    margin-right:5px;
+}
+
+.gratis{
+    background:#64748b;
+}
+
+.premium{
+    background:#2563eb;
+}
+
+.pro{
+    background:#0ea5e9;
+}
+
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.plan-gratis{
+    background:#475569;
+}
+
+.plan-premium{
+    background:#2563eb;
+}
+
+.plan-pro{
+    background:#0ea5e9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>👥 Gestión de Usuarios</h1>
+    <a href="/admin/dashboard" class="btn-volver">← Dashboard</a>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Plan</th>
+    <th>Fecha</th>
+    <th>Acciones</th>
+</tr>
+
+{% for usuario in usuarios %}
+
+<tr>
+
+<td>{{ usuario[0] }}</td>
+
+<td>{{ usuario[1] }}</td>
+
+<td>{{ usuario[2] }}</td>
+
+<td>
+
+{% if usuario[3] == "premium" %}
+<span class="badge plan-premium">Premium</span>
+
+{% elif usuario[3] == "pro" %}
+<span class="badge plan-pro">Pro</span>
+
+{% else %}
+<span class="badge plan-gratis">Gratis</span>
+
+{% endif %}
+
+</td>
+
+<td>{{ usuario[4] }}</td>
+
+<td>
+
+<a href="/admin/usuarios/plan/{{ usuario[0] }}/gratis"
+class="btn gratis">
+Gratis
+</a>
+
+<a href="/admin/usuarios/plan/{{ usuario[0] }}/premium"
+class="btn premium">
+Premium
+</a>
+
+<a href="/admin/usuarios/plan/{{ usuario[0] }}/pro"
+class="btn pro">
+Pro
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

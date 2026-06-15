@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Study AI</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+.card{
+    width:520px;
+    background:#1e3a8a;
+    padding:45px;
+    border-radius:25px;
+    text-align:center;
+}
+input{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    margin-top:20px;
+    font-size:16px;
+    box-sizing:border-box;
+}
+button{
+    width:100%;
+    padding:18px;
+    margin-top:25px;
+    border:none;
+    border-radius:14px;
+    background:#38bdf8;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.error{
+    color:#fecaca;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Panel Administrador</h1>
+
+    {% if mensaje %}
+        <p class="error">{{ mensaje }}</p>
+    {% endif %}
+
+    <form method="POST" action="/admin">
+        <input type="password" name="clave" placeholder="Clave Admin" required>
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Comprobante enviado</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+.card{
+    background:rgba(255,255,255,.08);
+    padding:45px;
+    border-radius:25px;
+    max-width:600px;
+}
+a{
+    display:inline-block;
+    margin-top:25px;
+    color:white;
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+    padding:15px 30px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>✅ Comprobante enviado</h1>
+    <p>Tu solicitud para el plan {{ plan }} fue enviada correctamente.</p>
+    <p>Tu cuenta será revisada y activada por el administrador.</p>
+
+    <a href="/dashboard">Volver al dashboard</a>
+</div>
+
+</body>
+</html>

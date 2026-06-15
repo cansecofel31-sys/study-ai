@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyAI PRO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+
+    <div class="texto-logo">
+
+        <h1>
+            Study<span>AI</span>
+        </h1>
+
+        <p>
+            Aprende más rápido con Inteligencia Artificial
+        </p>
+
+    </div>
+
+</div>
+   <nav class="menu">
+
+    <a href="/">Inicio</a>
+
+    <a href="#caracteristicas">Características</a>
+
+    <a href="#precios">Precios</a>
+
+    <a href="#contacto">Contacto</a>
+
+    <a href="/login" class="btn-login">
+        Iniciar sesión
+    </a>
+
+    <a href="/registro" class="btn-registro">
+        Registrarse
+    </a>
+
+   </nav>
+</header>
+
+<main class="hero" id="inicio"></main>
+
+    <section class="card">
+
+        <div class="logo-icon">🧠</div>
+
+        <h1>Transforma PDFs en conocimiento</h1>
+
+        <p>
+            Genera resúmenes, cuestionarios y material de estudio en segundos utilizando inteligencia artificial.
+        </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>PDF</h3>
+                <p>Procesamiento inteligente</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>IA</h3>
+                <p>Análisis automático</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>24/7</h3>
+                <p>Disponible</p>
+            </div>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" onsubmit="mostrarCarga()">
+            <label class="upload-box">
+                <input type="file" name="pdf" accept="application/pdf" required>
+                <span>📄 Selecciona tu PDF</span>
+                <small>Solo archivos PDF</small>
+            </label>
+
+            <button type="submit">Generar resumen</button>
+        </form>
+
+        <div id="cargando" class="cargando">
+            Procesando documento...
+        </div>
+
+        <div class="features" id="caracteristicas"></div>
+            <div class="feature">
+                <div class="feature-icon">📄</div>
+                <h3>Resúmenes Inteligentes</h3>
+                <p>Extrae las ideas principales del PDF y convierte textos largos en contenido fácil de estudiar.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h3>Cuestionarios Automáticos</h3>
+                <p>Crea preguntas de estudio para repasar los temas más importantes del documento.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3>Flashcards de Estudio</h3>
+                <p>Genera tarjetas de pregunta y respuesta para memorizar conceptos clave más rápido.</p>
+            </div>
+        </div>
+            <section id="precios" class="seccion">
+
+
+            <h2>Planes</h2>
+
+            <div class="planes-grid">
+                <div class="plan">
+                    <h3>Gratis</h3>
+                    <h1>$0</h1>
+                    <p>3 PDFs por día</p>
+                    <button class="plan-btn">Empezar Gratis</button>
+                </div>
+
+                <div class="plan">
+                    <h3>Premium</h3>
+                    <h1>$99</h1>
+                    <p>PDFs ilimitados</p>
+                    <button class="plan-btn" onclick="window.location.href='/premium'">
+                     Elegir Plan
+                    </button>
+                </div>
+
+                <div class="plan">
+                    <h3>Pro</h3>
+                    <h1>$199</h1>
+                    <p>IA avanzada</p>
+                    <button class="plan-btn" onclick="window.location.href='/pro'">
+                     Elegir Plan
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="seccion">
+    <h2>Contacto</h2>
+
+    <p>Correo: contacto@studyai.com</p>
+
+    <form class="contacto-form">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Tu correo" required>
+        <textarea placeholder="Escribe tu mensaje"></textarea>
+
+        <button type="submit" class="plan-btn">
+            Enviar mensaje
+        </button>
+    </form>
+
+
+    {% if resumen %}
+
+    <section class="resultado-info">
+
+     <h3>📊 Documento analizado correctamente</h3>
+
+<p>
+Palabras procesadas: {{ total_palabras }}
+</p>
+
+<p>
+Preguntas generadas: 10
+</p>
+
+<p>
+Flashcards generadas: 10
+</p>
+
+</section>
+
+    <section id="caracteristicas" class="seccion">
+    <h2>Características</h2>
+    <p>
+        Study AI analiza PDFs, genera resúmenes,
+        cuestionarios, flashcards y documentos descargables.
+    </p>
+</section>
+
+<section id="precios" class="seccion">
+    <h2>Planes</h2>
+
+    <div class="planes">
+
+        <div class="plan">
+            <h3>Gratis</h3>
+            <p>3 PDFs al día</p>
+            <strong>$0</strong>
+            <br><br>
+            <button class="plan-btn" onclick="window.location.href='/'">
+              Empezar Gratis
+            </button>
+        </div>
+
+        <div class="plan">
+            <h3>Premium</h3>
+            <p>PDFs ilimitados, cuestionarios y Word</p>
+            <strong>$99 MXN / mes</strong>
+            <br><br>
+            <button class="plan-btn" onclick="window.location.href='/premium'">
+              Elegir Plan
+            </button>
+       
+        </div>
+
+        <div class="plan">
+            <h3>Pro</h3>
+            <p>IA avanzada y generación completa</p>
+            <strong>$199 MXN / mes</strong>
+            <br><br>
+            <button class="plan-btn" onclick="window.location.href='/pro'">
+              Elegir Plan
+            </button>
+        </div>
+
+    </div>
+</section>
+<section id="contacto" class="seccion">
+    <h2>Contacto</h2>
+    <p>Correo: contacto@studyai.com</p>
+</section>
+   
+    <section class="resultado">
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="mostrarTab('resumen')">
+                📄 Resumen
+            </button>
+
+            <button class="tab-btn" onclick="mostrarTab('preguntas')">
+                📝 Cuestionarios
+            </button>
+
+            <button class="tab-btn" onclick="mostrarTab('flashcards')">
+                🧠 Flashcards
+            </button>
+
+            <button class="tab-btn" onclick="mostrarTab('chatpdf')">
+                💬 Chat PDF
+            </button>
+        </div>
+
+       <div id="resumen" class="tab-content active-tab">
+    <h2>Resumen generado</h2>
+
+    <p>{{ resumen }}</p>
+
+    <br>
+
+    <a
+       href="{{ url_for('descargar_pdf') }}"
+       target="_blank"
+       class="pdf-btn">
+       📄 Descargar Resumen PDF
+    </a>
+
+    <a href="{{ url_for('descargar_word') }}" class="pdf-btn">
+        📝 Descargar Cuestionario Word
+    </a>
+
+    <a href="{{ url_for('mapa_conceptual') }}" class="pdf-btn">
+    🗺️ Descargar Mapa Conceptual
+    </a>
+
+</div>
+
+        <div id="preguntas" class="tab-content">
+            <h2>Preguntas de estudio</h2>
+
+            <ol class="preguntas-lista">
+                {% for pregunta in preguntas %}
+                <li>{{ pregunta }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div id="flashcards" class="tab-content">
+
+    <h2>🧠 Flashcards de Estudio</h2>
+
+    <div class="flashcards">
+
+       {% if flashcards %}
+
+<div class="flashcards">
+
+<h2>🧠 Flashcards Inteligentes</h2>
+
+<div class="flashcards-grid">
+
+{% for card in flashcards %}
+
+<div class="flashcard">
+
+    <div class="pregunta">
+
+        {{ card.pregunta }}
+
+    </div>
+
+    <button class="mostrar-btn">
+
+        Mostrar respuesta
+
+    </button>
+
+    <div class="respuesta">
+
+        {{ card.respuesta }}
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endif %}
+</div>
+
+        <div id="chatpdf" class="tab-content">
+    <h2>Chat con el PDF</h2>
+
+    <div class="chat-box">
+        <input type="text" id="preguntaPDF" placeholder="Escribe tu pregunta sobre el PDF...">
+
+        <button type="button" onclick="preguntarPDF()">
+            Preguntar al PDF
+        </button>
+
+        <div id="respuestaPDF" class="respuesta-chat">
+            Aquí aparecerá la respuesta.
+        </div>
+    </div>
+</div>
+
+    </section>
+    {% endif %}
+
+</main>
+
+<footer class="footer">
+
+    Study<span>AI</span>
+
+    <p>
+        Aprende más rápido con Inteligencia Artificial
+    </p>
+
+    <small>
+        © 2026 Todos los derechos reservados.
+    </small>
+
+    <small>
+    Diseñado y desarrollado por Felipe Ramón Canseco Canseco.
+    </small>
+
+    <br>
+
+    <small>
+    Versión 1.0
+    </small>
+
+</footer>
+
+<script>
+function mostrarCarga(){
+    document.getElementById("cargando").style.display = "block";
+}
+
+function mostrarTab(tabId){
+    document.querySelectorAll('.tab-content').forEach(tab=>{
+        tab.classList.remove('active-tab');
+    });
+
+    document.getElementById(tabId).classList.add('active-tab');
+}
+
+async function preguntarPDF(){
+    const pregunta = document.getElementById("preguntaPDF").value;
+    const respuestaDiv = document.getElementById("respuestaPDF");
+
+    respuestaDiv.innerHTML = "Buscando respuesta...";
+
+    const formData = new FormData();
+    formData.append("pregunta", pregunta);
+
+    const respuesta = await fetch("/preguntar", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await respuesta.json();
+
+    respuestaDiv.innerHTML = data.respuesta;
+}
+</script>
+
+<script>
+
+const botones=document.querySelectorAll(".mostrar-btn");
+
+botones.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const respuesta=btn.nextElementSibling;
+
+if(respuesta.style.display=="block"){
+
+respuesta.style.display="none";
+
+btn.innerHTML="Mostrar respuesta";
+
+}
+
+else{
+
+respuesta.style.display="block";
+
+btn.innerHTML="Ocultar respuesta";
+
+}
+
+});
+
+});
+
+</script>
+</body>
+</html>

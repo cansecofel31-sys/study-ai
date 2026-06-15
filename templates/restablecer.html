@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nueva contraseña</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    width:420px;
+    background:rgba(255,255,255,.08);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+}
+input,button{
+    width:100%;
+    padding:15px;
+    margin-top:18px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+}
+button{
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.error{color:#fca5a5;}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Nueva contraseña</h1>
+
+    {% if mensaje %}
+        <p class="error">{{ mensaje }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <input type="password" name="password" placeholder="Nueva contraseña" required>
+        <input type="password" name="confirmar" placeholder="Confirmar contraseña" required>
+        <button type="submit">Guardar contraseña</button>
+    </form>
+</div>
+
+</body>
+</html>
