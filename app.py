@@ -886,7 +886,10 @@ def restablecer():
 
     return render_template("restablecer.html", mensaje=mensaje)
 
+@app.route("/politica")
+def politica():
 
+    return render_template("politica_privacidad.html")
 
 if __name__ == "__main__":
     crear_base_datos()
