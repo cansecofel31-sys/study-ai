@@ -502,16 +502,20 @@ def registro():
         correo = request.form.get("correo")
         password = request.form.get("password")
 
+        if not nombre or not correo or not password:
+            mensaje = "Todos los campos son obligatorios."
+            return render_template("registro.html", mensaje=mensaje)
+
         password_segura = generate_password_hash(password)
 
         try:
             conexion = sqlite3.connect("usuarios.db")
             cursor = conexion.cursor()
 
-            cursor.execute(
-                "INSERT INTO usuarios (nombre, correo, password) VALUES (?, ?, ?)",
-                (nombre, correo, password_segura)
-            )
+            cursor.execute("""
+                INSERT INTO usuarios (nombre, correo, password, plan)
+                VALUES (?, ?, ?, ?)
+            """, (nombre, correo, password_segura, "gratis"))
 
             conexion.commit()
             conexion.close()
@@ -521,9 +525,10 @@ def registro():
         except sqlite3.IntegrityError:
             mensaje = "Este correo ya está registrado."
 
+        except Exception as e:
+            mensaje = f"Error: {e}"
+
     return render_template("registro.html", mensaje=mensaje)
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     mensaje = ""
