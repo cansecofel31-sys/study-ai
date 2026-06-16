@@ -891,6 +891,11 @@ def politica():
 
     return render_template("politica_privacidad.html")
 
+@app.route("/terminos")
+def terminos():
+
+    return render_template("terminos.html")
+
 if __name__ == "__main__":
     crear_base_datos()
     app.run(debug=True, port=5000)
