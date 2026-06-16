@@ -3,3 +3,4 @@ gunicorn
 python-docx
 PyPDF2
 pypdf
+reportlab
