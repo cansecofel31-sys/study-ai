@@ -896,6 +896,11 @@ def terminos():
 
     return render_template("terminos.html")
 
+@app.route("/cookies")
+def cookies():
+
+    return render_template("cookies.html")
+
 if __name__ == "__main__":
     crear_base_datos()
     app.run(debug=True, port=5000)
